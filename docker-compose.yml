@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+   db:
+     image: mysql:5.7
+     container_name: nuxt-mysql
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     env_file: .env
+
+   wordpress:
+     depends_on:
+       - db
+     image: wordpress:latest
+     container_name: nuxt-wordpress
+     volumes:
+        - ./wordpress:/var/www/html/
+     ports:
+       - "8000:80"
+     restart: always
+     env_file: .env
+
+volumes:
+    db_data: {}
