@@ -1,6 +1,6 @@
-# nuxt-project
+# nuxt-wp-project
 
-> My outstanding Nuxt.js project
+> My outstanding Nuxt.js x WordPress project
 
 ## Build Setup
 
