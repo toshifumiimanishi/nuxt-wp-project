@@ -1,0 +1,26 @@
+<template>
+  <div>
+    <div class="wp-article_title">{{ post.title.rendered }}</div>
+    <div class="wp-article_content" v-html="post.content.rendered"></div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  data () {
+    return {
+      post: {}
+    }
+  },
+  async asyncData({ params }) {
+    return await axios.get(`http://localhost:8000/wp-json/wp/v2/posts/${params.article}`)
+    .then(({ data }) => {
+      return {
+        post: data
+      }
+    })
+  }
+}
+</script>

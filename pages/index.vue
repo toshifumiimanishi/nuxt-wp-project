@@ -25,8 +25,10 @@
         </a>
       </div>
       <article class="wp-article" v-for="post in posts" :key="post.id">
-        <div class="wp-article_title">{{ post.title.rendered }}</div>
-        <div class="wp-article_content" v-html="post.content.rendered"></div>
+        <n-link :to="{ path: '/' + post.id }">
+          <div class="wp-article_title">{{ post.title.rendered }}</div>
+          <div class="wp-article_content" v-html="post.content.rendered"></div>
+        </n-link>
       </article>
     </div>
   </div>
@@ -47,9 +49,9 @@ export default {
   },
   created () {
     axios.get('http://localhost:8000/wp-json/wp/v2/posts/')
-      .then(({ data }) => {
-        this.posts = data
-      })
+    .then(({ data }) => {
+      this.posts = data
+    })
   }
 }
 </script>
