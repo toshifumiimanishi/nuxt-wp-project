@@ -48,7 +48,7 @@ export default {
     Logo
   },
   created () {
-    axios.get('http://localhost:8000/wp-json/wp/v2/posts/')
+    axios.get('http://127.0.0.1:8000/wp-json/wp/v2/posts/')
     .then(({ data }) => {
       this.posts = data
     })

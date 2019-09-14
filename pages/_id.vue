@@ -18,7 +18,7 @@ export default {
     if (payload) {
       return { post: payload }
     } else {
-      return await axios.get(`http://localhost:8000/wp-json/wp/v2/posts/${params.id}`)
+      return await axios.get(`http://127.0.0.1:8000/wp-json/wp/v2/posts/${params.id}`)
       .then(({ data }) => {
         return {
           post: data
