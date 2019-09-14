@@ -14,13 +14,17 @@ export default {
       post: {}
     }
   },
-  async asyncData({ params }) {
-    return await axios.get(`http://localhost:8000/wp-json/wp/v2/posts/${params.article}`)
-    .then(({ data }) => {
-      return {
-        post: data
-      }
-    })
+  async asyncData({ params, error, payload }) {
+    if (payload) {
+      return { post: payload }
+    } else {
+      return await axios.get(`http://localhost:8000/wp-json/wp/v2/posts/${params.id}`)
+      .then(({ data }) => {
+        return {
+          post: data
+        }
+      })
+    }
   }
 }
 </script>

@@ -57,5 +57,20 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  generate: {
+    routes () {
+      return axios.get('http://localhost:8000/wp-json/wp/v2/posts/')
+      .then(({ data }) => {
+        const posts = data
+
+        return posts.map(post => {
+          return {
+            route: `/post/${post.id}`,
+            payload: post
+          }
+        })
+      })
+    }
   }
 }
