@@ -92,3 +92,6 @@ sw.*
 
 # WordPress
 wordpress/*
+
+# RubyGems dependency directory
+vendor/*
