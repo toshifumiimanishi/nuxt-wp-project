@@ -48,7 +48,7 @@ export default {
     Logo
   },
   created () {
-    axios.get('http://nuxt-wp-project.oops.jp/wp-json/wp/v2/posts/')
+    axios.get('https://oops-nuxt-wp-project.ssl-lolipop.jp/wp-json/wp/v2/posts/')
     .then(({ data }) => {
       this.posts = data
     })

@@ -60,7 +60,7 @@ export default {
   },
   generate: {
     routes () {
-      return axios.get('http://nuxt-wp-project.oops.jp/wp-json/wp/v2/posts/')
+      return axios.get('https://oops-nuxt-wp-project.ssl-lolipop.jp/wp-json/wp/v2/posts/')
       .then(({ data }) => {
         const posts = data
 

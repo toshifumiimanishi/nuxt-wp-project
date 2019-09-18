@@ -18,7 +18,7 @@ export default {
     if (payload) {
       return { post: payload }
     } else {
-      return await axios.get(`http://nuxt-wp-project.oops.jp/wp-json/wp/v2/posts/${params.id}`)
+      return await axios.get(`https://oops-nuxt-wp-project.ssl-lolipop.jp/wp-json/wp/v2/posts/${params.id}`)
       .then(({ data }) => {
         return {
           post: data
