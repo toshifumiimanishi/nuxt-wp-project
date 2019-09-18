@@ -60,13 +60,13 @@ export default {
   },
   generate: {
     routes () {
-      return axios.get('http://127.0.0.1:8000/wp-json/wp/v2/posts/')
+      return axios.get('http://nuxt-wp-project.oops.jp/wp-json/wp/v2/posts/')
       .then(({ data }) => {
         const posts = data
 
         return posts.map(post => {
           return {
-            route: `/post/${post.id}`,
+            route: `/posts/${post.id}`,
             payload: post
           }
         })

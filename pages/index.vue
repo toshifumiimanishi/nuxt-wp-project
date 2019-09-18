@@ -25,7 +25,7 @@
         </a>
       </div>
       <article class="wp-article" v-for="post in posts" :key="post.id">
-        <n-link :to="{ path: '/' + post.id }">
+        <n-link :to="{ path: '/posts/' + post.id }">
           <div class="wp-article_title">{{ post.title.rendered }}</div>
           <div class="wp-article_content" v-html="post.content.rendered"></div>
         </n-link>
@@ -48,7 +48,7 @@ export default {
     Logo
   },
   created () {
-    axios.get('http://127.0.0.1:8000/wp-json/wp/v2/posts/')
+    axios.get('http://nuxt-wp-project.oops.jp/wp-json/wp/v2/posts/')
     .then(({ data }) => {
       this.posts = data
     })
