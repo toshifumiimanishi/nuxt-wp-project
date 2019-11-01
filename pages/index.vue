@@ -47,12 +47,14 @@ export default {
   components: {
     Logo
   },
-  created () {
-    axios.get('https://oops-nuxt-wp-project.ssl-lolipop.jp/wp-json/wp/v2/posts/')
+  async asyncData({ $axios }) {
+    return await $axios.get(`${$axios.defaults.baseURL}/posts/`)
     .then(({ data }) => {
-      this.posts = data
+      return {
+        posts: data
+      }
     })
-  }
+  },
 }
 </script>
 
