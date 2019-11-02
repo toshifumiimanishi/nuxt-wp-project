@@ -1,4 +1,5 @@
 const axios = require('axios')
+const apiUrl = 'http://localhost:8000/wp-json/wp/v2';
 
 export default {
   mode: 'spa',
@@ -47,7 +48,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: 'http://localhost:8000/wp-json/wp/v2'
+    baseURL: apiUrl
   },
   /*
   ** Build configuration
@@ -61,7 +62,7 @@ export default {
   },
   generate: {
     routes () {
-      return axios.get('https://oops-nuxt-wp-project.ssl-lolipop.jp/wp-json/wp/v2/posts/')
+      return axios.get(`${apiUrl}/posts/`)
       .then(({ data }) => {
         const posts = data
 

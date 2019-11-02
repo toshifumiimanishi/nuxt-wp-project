@@ -6,19 +6,17 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   data () {
     return {
       post: {}
     }
   },
-  async asyncData({ params, error, payload }) {
+  async asyncData({ $axios, params, error, payload }) {
     if (payload) {
       return { post: payload }
     } else {
-      return await axios.get(`https://oops-nuxt-wp-project.ssl-lolipop.jp/wp-json/wp/v2/posts/${params.id}`)
+      return await $axios.get(`${$axios.defaults.baseURL}/posts/${params.id}`)
       .then(({ data }) => {
         return {
           post: data
