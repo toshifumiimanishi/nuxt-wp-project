@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="wp-article_title">{{ post.title.rendered }}</div>
-    <div class="wp-article_content" v-html="post.content.rendered"></div>
+    <h2>{{ post.title.rendered }}</h2>
+    <div v-html="post.content.rendered"></div>
   </div>
 </template>
 
@@ -16,12 +16,8 @@ export default {
     if (payload) {
       return { post: payload }
     } else {
-      return await $axios.get(`${$axios.defaults.baseURL}/posts/${params.id}`)
-      .then(({ data }) => {
-        return {
-          post: data
-        }
-      })
+      const { data } = await $axios.get(`/posts/${params.id}`)
+      return { post: data }
     }
   }
 }

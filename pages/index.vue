@@ -24,10 +24,10 @@
           GitHub
         </a>
       </div>
-      <article class="wp-article" v-for="post in posts" :key="post.id">
+      <article v-for="post in posts" :key="post.id">
         <n-link :to="{ path: '/posts/' + post.id }">
-          <div class="wp-article_title">{{ post.title.rendered }}</div>
-          <div class="wp-article_content" v-html="post.content.rendered"></div>
+          <h2>{{ post.title.rendered }}</h2>
+          <div v-html="post.excerpt.rendered"></div>
         </n-link>
       </article>
     </div>
@@ -47,12 +47,8 @@ export default {
     Logo
   },
   async asyncData({ $axios }) {
-    return await $axios.get(`${$axios.defaults.baseURL}/posts/`)
-    .then(({ data }) => {
-      return {
-        posts: data
-      }
-    })
+    const { data } = await $axios.get('/posts')
+    return { posts: data }
   },
 }
 </script>
